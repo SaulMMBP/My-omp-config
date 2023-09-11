@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "#68afa4",
+          "template": "{{ if .SSHSession }}🕹️{{ end }}{{ .UserName }}{{ if .Root }}💀{{ else }}🐣{{ end }}{{ .HostName }}"
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#b34040",
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} 󰆓 {{ .StashCount }}{{ end }}",
+          "properties": {
+            "branch_icon": " ",
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "#4b8bbe",
+          "template": " 🐍 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#dbc548",
+          "template": " {{ .Path }}",
+          "properties": {
+            "mapped_locations_enabled": true,
+            "mapped_locations": {
+              "D:/": "🎪"
+            },
+            "style": "folder"
+          }
+        }
+      ]
+    },
+    {
+      "type":"prompt",
+      "newline": true,
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "time",
+          "style": "plain",
+          "template": "{{ if and (eq .CurrentDate.Month 2) (eq .CurrentDate.Day 17) }}🎂 {{ else if eq .CurrentDate.Month 12 }}🎄 {{ else if or (eq .CurrentDate.Month 10) (eq .CurrentDate.Month 11) }}🎃 {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": ""
+        }
+      ]
+    }
+  ],
+  "debug_prompt": {
+    "template": "[🐞]"
+  }
+}
