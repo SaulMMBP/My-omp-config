@@ -31,6 +31,11 @@
           "foreground": "#4b8bbe",
           "template": " 🐍 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
         },
+        { "type": "node",
+          "style": "plain",
+          "foreground": "#3e7a38",
+          "template": "  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}"
+        },
         {
           "type": "path",
           "style": "plain",
